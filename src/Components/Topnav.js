@@ -1,5 +1,8 @@
 import React from 'react'
 import './Topnav.css'
+import FlipCameraIosIcon from '@mui/icons-material/FlipCameraIos';
+import SearchIcon from '@mui/icons-material/Search';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const Topnav = () => {
   return (
@@ -8,9 +11,9 @@ const Topnav = () => {
         <h3>Whatsapp</h3>
       </div>
       <div className='topnav-right'>
-        <span>Icon1</span>
-        <span>Icon2</span>
-        <span>Icon3</span>
+        <span><FlipCameraIosIcon/></span>
+        <span><SearchIcon/></span>
+        <span><MoreVertIcon/></span>
       </div>
     </div>
   )

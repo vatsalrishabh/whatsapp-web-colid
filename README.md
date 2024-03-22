@@ -7,6 +7,8 @@ mid nav backgroiun : #101d25
 bottom nav background : #090e12
 bottmo nav message color ; #00b09d green 
 
+inidvchat top nav ; #232d36
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
