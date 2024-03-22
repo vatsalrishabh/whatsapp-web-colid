@@ -1,0 +1,5 @@
+.midnav {
+    height: 84vh;
+    background: #101d25;
+    overflow-y: auto; /* or any other value like scroll, hidden, etc. */
+}

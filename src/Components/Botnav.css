@@ -1,0 +1,19 @@
+.botnav{
+    height: 8vh;
+    background: #090e12;
+    display: flex;
+}
+.botnav-left{
+   color: white;
+   width: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.botnav-right{
+  color: white;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

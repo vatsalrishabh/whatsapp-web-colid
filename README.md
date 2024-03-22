@@ -1,5 +1,12 @@
 # Getting Started with Create React App
 
+top navbar color : #232d36
+top nav text : #9ca0a4
+top nav green highligts:#0eab96
+mid nav backgroiun : #101d25
+bottom nav background : #090e12
+bottmo nav message color ; #00b09d green 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

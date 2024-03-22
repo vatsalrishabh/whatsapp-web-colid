@@ -1,0 +1,47 @@
+.person{
+    display: flex;
+    padding: 8px;
+}
+.person-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    
+}
+.person-center{
+    padding-left: 8px;
+    color: white;
+    width: 65vw;
+}
+.name{
+    font-size: large;
+    color: white;
+    font-weight: 700;
+}
+.last-message{
+ font-size: no;
+}
+.person-right{
+    width: 20vw;
+    justify-content: space-between;
+
+}
+.time{
+    color: #00b09d;
+
+}
+ .unread-count{
+    margin-left: 35px;
+    margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  background-color: #00b09d;
+  color: white;
+  width: 20px;
+  border-radius: 30px;
+}
+.person-left div img{
+    width: 50px;
+    border-radius: 30px;
+}

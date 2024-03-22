@@ -1,0 +1,19 @@
+.topnav{
+height: 8vh;
+background:#232d36;
+display: flex;
+}
+.topnav-left{
+color: #9ca0a4;
+display: flex;
+padding-left: 15px;
+align-items: center;
+width: 50%;
+}
+.topnav-right{
+    color:#9ca0a4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+}
