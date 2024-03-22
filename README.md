@@ -8,6 +8,19 @@ bottom nav background : #090e12
 bottmo nav message color ; #00b09d green 
 
 inidvchat top nav ; #232d36
+indivhat bottmo and midnav : #212429
+mid nav date backgorund; #252c34;
+mid nav date color :#838c93
+
+left chat box color : #212e36
+message color ; #bfc5ca
+time color : #717d7f
+
+right chat box color : #0c413c
+message color ; #bfc5ca
+time color : #717d7f
+
+send button ;#01ae9b;
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
