@@ -22,6 +22,8 @@ time color : #717d7f
 
 send button ;#01ae9b;
 
+create acconu green heading : #3e7b9a
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

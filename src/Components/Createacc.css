@@ -1,0 +1,92 @@
+.createacc{
+    padding-top: 20px;
+}
+.heading{
+    color: #3e7b9a;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 500;
+    padding-bottom: 15px;
+
+}
+.heading-2{
+    color:#9fa4a6;
+    text-align: center;
+}
+.upload-dp-parent{
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 25px;
+}
+.upload-dp{
+   background: #eceeef;
+   width: 150px;
+   height: 150px;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.upload-dp div{
+    color:#a9b2b7;
+
+}
+.upload-dp div svg{
+    font-size: 70px;
+
+}
+.formbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #86a3b3;
+}
+
+.formbox-input{
+    padding: 10px;
+    display: flex;
+}
+.icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+.formbox-input input{
+border: none;
+outline: none;
+border-bottom: 2px solid #169386;
+color: #86a3b3;
+width: 240px;
+height: 50px;
+}
+.formbox-button{
+    display: flex;
+    padding: 10px;
+}
+.formbox-button select{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #169386;
+    color: #86a3b3;
+    width: 250px;
+    height: 50px;
+
+    }
+
+
+button{
+    background-color: #00cc3f;
+    color: white;
+    width: 160px;
+    height: 45px;
+    border-radius: 50px;
+    
+}
+.submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

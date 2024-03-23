@@ -1,5 +1,6 @@
 import './App.css';
 import Botnav from './Components/Botnav';
+import Createacc from './Components/Createacc';
 import Individualchat from './Components/Individualchat';
 import Midnav from './Components/Midnav';
 import Topnav from './Components/Topnav';
@@ -10,7 +11,8 @@ function App() {
       {/* <Topnav/>
       <Midnav/>
       <Botnav/> */}
-      <Individualchat/>
+      {/* <Individualchat/> */}
+      <Createacc/>
     </div>
   );
 }
