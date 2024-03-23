@@ -28,6 +28,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   background-size: cover;
 }
 .upload-dp div{
     color:#a9b2b7;
@@ -47,6 +48,9 @@
 .formbox-input{
     padding: 10px;
     display: flex;
+}
+.file-type-hidden{
+    display: none;
 }
 .icon-container{
     display: flex;
