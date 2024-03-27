@@ -15,7 +15,7 @@ const Midnav = () => {
         <Person/>
         <Person/>
         <Person/>
-        <Person/>
+         <Person/>
     </div>
   )
 }

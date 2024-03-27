@@ -94,3 +94,43 @@ button{
     justify-content: center;
     align-items: center;
 }
+
+
+
+
+
+
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.notification {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 15px 20px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Shadow */
+    animation: fadeInOut 2s forwards; /* Animation */
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0; /* Start invisible */
+        transform: translateY(-20px); /* Start above the screen */
+    }
+    10% {
+        opacity: 1; /* Fade in */
+        transform: translateY(0); /* Move to original position */
+    }
+    90% {
+        opacity: 1; /* Stay visible */
+        transform: translateY(0); /* Stay in position */
+    }
+    100% {
+        opacity: 0; /* Fade out */
+        transform: translateY(-20px); /* Move above the screen */
+    }
+}

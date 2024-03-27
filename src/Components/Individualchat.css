@@ -33,7 +33,6 @@ height: 8vh;
 }
 
 
-
 .indivchat-topnav-right{
     width: 50%;
     display: flex;
@@ -173,5 +172,8 @@ align-items: end;
     justify-content: center;
     align-items: center;
     color: #bfc5ca;
+}
+.white{
+    color: white;
 }
 /* bot nav ends */

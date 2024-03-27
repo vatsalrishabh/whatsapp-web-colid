@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Createacc.css';
+import axios from 'axios'; // Import Axios
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -13,35 +14,61 @@ const Createacc = () => {
     const [mobile, setMobile] = useState('');
     const [gender, setGender] = useState('');
     const [dpUrl, setDpUrl] = useState(null); // State to store uploaded image URL
+    const [notification, setNotification] = useState(null); // State for notification content
     const fileInputRef = useRef(null); // Ref to the hidden file input
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        // Clear notification after 2 seconds
+        const timer = setTimeout(() => {
+            setNotification(null);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, [notification]);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Perform validation
         if (!validateEmail(email)) {
-            alert('Please enter a valid email address ending with @gcu.edu.in');
+            setNotification({ type: 'error', message: 'Please enter a valid email address ending with @gcu.edu.in' });
             return;
         }
 
         if (!name.trim()) {
-            alert('Please enter your name');
+            setNotification({ type: 'error', message: 'Please enter your name' });
             return;
         }
 
         if (!validateIndianMobileNumber(mobile)) {
-            alert('Please enter a valid 10-digit Indian mobile number');
+            setNotification({ type: 'error', message: 'Please enter a valid 10-digit Indian mobile number' });
             return;
         }
 
         if (!gender) {
-            alert('Please select your gender');
+            setNotification({ type: 'error', message: 'Please select your gender' });
             return;
         }
 
         // If all validations pass, proceed with form submission
-        console.log('Form submitted successfully');
-    }
+        try {
+            const response = await axios.post('http://localhost:5000/api/register', {
+                email,
+                name,
+                mobile,
+                gender,
+                dpUrl
+            });
+
+            setNotification({ type: 'success', message: 'Registration successful' });
+            console.log('Response from server:', response.data);
+            // Handle success response
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setNotification({ type: 'error', message: 'An error occurred while registering. Please try again later.' });
+            // Handle error
+        }
+    };
 
     const handleUploadClick = () => {
         // Trigger click event on the hidden file input
@@ -56,7 +83,14 @@ const Createacc = () => {
 
     return (
         <div className='createacc'>
-            <div className='heading'>Create your Whatsapp profile</div>
+            <div className='notification-container'>
+                {notification && (
+                    <div className={`notification ${notification.type}`}>
+                        {notification.message}
+                    </div>
+                )}
+            </div>
+            <div className='heading'>Create your Dchat profile</div>
             <div className='heading-2'>Help your fellow mates to embrace your beauty</div>
 
             <div className='formbox'>
