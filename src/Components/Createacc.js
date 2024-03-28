@@ -78,7 +78,7 @@ const Createacc = () => {
 
         // Submit form data to backend
         try {
-            const response = await axios.post('http://localhost:5000/api/register', {
+            const response = await axios.post('https://whatsapp-backend-uoax.onrender.com/api/register', {
                 email,
                 name,
                 mobile,
