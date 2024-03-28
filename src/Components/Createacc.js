@@ -1,12 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Createacc.css';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CallIcon from '@mui/icons-material/Call';
 import MaleIcon from '@mui/icons-material/Male';
-import { validateEmail, validateIndianMobileNumber } from './Validation/Validation'; // Importing validation functions
+import { sendWhatsappMessage } from './Whatsapp'; 
+import { validateEmail, validateIndianMobileNumber } from './Validation/Validation';
+const generateOTP = require('./OTPgenerator');
+ // Importing validation functions
 
 const Createacc = () => {
     const [email, setEmail] = useState('');
@@ -14,7 +17,12 @@ const Createacc = () => {
     const [mobile, setMobile] = useState('');
     const [gender, setGender] = useState('');
     const [dpUrl, setDpUrl] = useState(null); // State to store uploaded image URL
+    const [emailOTP, setEmailOTP] = useState('');
+    const [whatsappOTP, setWhatsappOTP] = useState('');
     const [notification, setNotification] = useState(null); // State for notification content
+    const [showEmailOTP, setShowEmailOTP] = useState(false); // State to show/hide email OTP section
+    const [showWhatsappOTP, setShowWhatsappOTP] = useState(false); // State to show/hide WhatsApp OTP section
+    const [inputsDisabled, setInputsDisabled] = useState(false); // State to control inputs' disabled attribute
     const fileInputRef = useRef(null); // Ref to the hidden file input
 
     useEffect(() => {
@@ -50,14 +58,34 @@ const Createacc = () => {
             return;
         }
 
-        // If all validations pass, proceed with form submission
+        const prefixedMobileNumber = '+91' + mobile;
+        const whatsappOTP = generateOTP();
+        // Create the WhatsApp message including the OTP
+        const whatsappMessage = `Here is your Dchat OTP to verify your mobile number: ${whatsappOTP}`;
+
+        try {
+            // Send WhatsApp message with the prefixed mobile number
+            await sendWhatsappMessage(prefixedMobileNumber, whatsappMessage, 'Dimple999');
+            console.log('WhatsApp message sent successfully');
+        } catch (error) {
+            console.error('Error sending WhatsApp message:', error);
+        }
+        
+        // If all validations pass, show OTP sections and make inputs non-editable
+        setShowEmailOTP(true);
+        setShowWhatsappOTP(true);
+        setInputsDisabled(true);
+
+        // Submit form data to backend
         try {
             const response = await axios.post('http://localhost:5000/api/register', {
                 email,
                 name,
                 mobile,
                 gender,
-                dpUrl
+                dpUrl,
+                emailOTP,
+                whatsappOTP
             });
 
             setNotification({ type: 'success', message: 'Registration successful' });
@@ -116,6 +144,7 @@ const Createacc = () => {
                             placeholder='Enter Your College email' 
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            disabled={inputsDisabled}
                         />
                     </div>
                     <div className='formbox-input'>
@@ -125,6 +154,7 @@ const Createacc = () => {
                             placeholder='Enter Your Name' 
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                            disabled={inputsDisabled}
                         />
                     </div>
                     <div className='formbox-input'>
@@ -134,6 +164,7 @@ const Createacc = () => {
                             placeholder='Enter Your Mobile Number' 
                             value={mobile}
                             onChange={(e) => setMobile(e.target.value)}
+                            disabled={inputsDisabled}
                         />
                     </div>
                     <div className='formbox-button'>
@@ -141,6 +172,7 @@ const Createacc = () => {
                         <select
                             value={gender}
                             onChange={(e) => setGender(e.target.value)}
+                            disabled={inputsDisabled}
                         >
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
@@ -149,9 +181,44 @@ const Createacc = () => {
                         </select>
                     </div>
 
+                    {showEmailOTP && (
+                        <>
+                            <div className='formbox-input'>
+                                <div className='icon-container'>  <CallIcon /></div>
+                                <input 
+                                    type='text' 
+                                    placeholder='Enter OTP received on your email' 
+                                    value={emailOTP}
+                                    onChange={(e) => setEmailOTP(e.target.value)}
+                                />
+                            </div>
+                            <div className='submit'>
+                                <button type="submit"> Verify Email OTP</button>
+                            </div>
+                        </>
+                    )}
+
+                    {showWhatsappOTP && (
+                        <>
+                            <div className='formbox-input'>
+                                <div className='icon-container'>  <CallIcon /></div>
+                                <input 
+                                    type='text' 
+                                    placeholder='Enter OTP received on your WhatsApp' 
+                                    value={whatsappOTP}
+                                    onChange={(e) => setWhatsappOTP(e.target.value)}
+                                />
+                            </div>
+                            <div className='submit'>
+                                <button type="submit"> Verify Whatsapp OTP</button>
+                            </div>
+                        </>
+                    )}
+
                     <div className='submit'>
-                        <button type="submit"> Submit</button>
+                        <button type="submit" disabled={inputsDisabled}> Submit</button>
                     </div>
+                    
                 </form>
             </div>
         </div>
